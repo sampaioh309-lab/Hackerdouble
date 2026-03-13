@@ -2,10 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>HACKER BLAZE</title>
+<title>SISTEMA IA - DOUBLE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,13 +11,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins', sans-serif;
+font-family:Arial;
 }
 
 body{
 background:black;
-overflow:hidden;
 color:white;
+overflow:hidden;
 }
 
 /* MATRIX */
@@ -31,157 +29,148 @@ left:0;
 z-index:-1;
 }
 
-/* LOGIN */
+/* PAINEL */
 
-#login{
+#painel{
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
 width:340px;
+
 background:#000;
-padding:30px;
-border-radius:28px;
-box-shadow:0 0 40px red;
-text-align:center;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
-
-#login h1{
-font-size:26px;
-color:red;
-text-shadow:0 0 15px red;
-margin-bottom:25px;
-}
-
-#login input{
-width:100%;
-padding:15px;
-margin-bottom:15px;
-border-radius:14px;
-border:none;
-font-size:15px;
-}
-
-#login button{
-width:100%;
-padding:15px;
-border-radius:18px;
-border:none;
-background:red;
-color:white;
-font-size:17px;
-font-weight:600;
-box-shadow:0 0 20px red;
-}
-
-/* DASH */
-
-#dash{
-display:none;
-width:360px;
 padding:25px;
-border-radius:30px;
-background:black;
-box-shadow:0 0 45px red;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+
+border-radius:25px;
+
+box-shadow:0 0 40px red;
+
+text-align:center;
+
 }
+
+/* TITULO */
 
 .title{
+
 font-size:24px;
-font-weight:700;
 color:red;
-text-align:center;
+font-weight:bold;
 text-shadow:0 0 15px red;
-margin-bottom:8px;
+
+margin-bottom:10px;
+
 }
+
+/* RELÓGIO */
 
 .clock{
-text-align:center;
+
 font-size:14px;
-opacity:.85;
+opacity:.8;
 margin-bottom:20px;
+
 }
 
-.btn{
+/* BOTÃO */
+
+button{
+
 width:100%;
-padding:16px;
-border-radius:22px;
+padding:15px;
+
 border:none;
+border-radius:20px;
+
 background:red;
-font-size:16px;
-font-weight:600;
 color:white;
-box-shadow:0 0 25px red;
-margin-bottom:25px;
+
+font-weight:bold;
+font-size:16px;
+
+box-shadow:0 0 20px red;
+
+margin-bottom:20px;
+
 }
 
-.signal-box{
-border-radius:26px;
-padding:22px;
+/* CAIXA SINAL */
+
+.sinal-box{
+
 border:2px solid red;
+border-radius:20px;
+padding:20px;
+
+box-shadow:0 0 20px red;
+
+}
+
+/* BOLA */
+
+.ball{
+
+width:110px;
+height:110px;
+
+border-radius:50%;
+
+margin:0 auto 10px auto;
+
+animation:pulse 1.5s infinite;
+
+}
+
+/* CORES */
+
+.red{
+
+background:radial-gradient(circle,#ff4040,#990000);
+
 box-shadow:0 0 30px red;
-text-align:center;
+
 }
 
-/* BOLA PULSANDO */
+.black{
 
-.pulse-ball{
-width:120px;
-height:120px;
-margin:0 auto 10px auto;
-border-radius:50%;
-background:radial-gradient(circle,#ff4b4b 30%,#a30000 70%);
-box-shadow:0 0 25px red,0 0 60px red;
-animation:pulse 1.5s infinite;
+background:radial-gradient(circle,#555,#000);
+
+box-shadow:0 0 20px #444;
+
 }
 
-.pulse-black{
-width:120px;
-height:120px;
-margin:0 auto 10px auto;
-border-radius:50%;
-background:radial-gradient(circle,#444 30%,#000 70%);
-box-shadow:0 0 25px #555;
-animation:pulse 1.5s infinite;
-}
+/* ANIMAÇÃO */
 
 @keyframes pulse{
 
-0%{
-transform:scale(1);
-box-shadow:0 0 15px red;
-}
-
-50%{
-transform:scale(1.15);
-box-shadow:0 0 40px red;
-}
-
-100%{
-transform:scale(1);
-box-shadow:0 0 15px red;
-}
+0%{transform:scale(1)}
+50%{transform:scale(1.15)}
+100%{transform:scale(1)}
 
 }
 
 .next{
-font-size:18px;
-font-weight:600;
+
 color:red;
-}
-
-.protection{
-font-size:15px;
+font-weight:bold;
 margin-top:10px;
+
 }
 
-.g1{
+.protecao{
+
+margin-top:8px;
 font-size:14px;
-opacity:.85;
-margin-top:10px;
+
+}
+
+.gale{
+
+font-size:13px;
+opacity:.8;
+
 }
 
 </style>
@@ -191,42 +180,23 @@ margin-top:10px;
 
 <canvas id="matrix"></canvas>
 
-<!-- LOGIN -->
+<div id="painel">
 
-<div id="login">
-
-<h1>HACKER BLAZE</h1>
-
-<input placeholder="Login">
-<input type="password" placeholder="Senha">
-
-<button onclick="entrar()">ENTRAR</button>
-
-</div>
-
-<!-- DASH -->
-
-<div id="dash">
-
-<div class="title">🚀 Scanner Ativo</div>
+<div class="title">IA DOUBLE</div>
 
 <div class="clock" id="hora"></div>
 
-<button class="btn" onclick="gerarSinal()">🎯 GERAR SINAL</button>
+<button onclick="gerarSinal()">GERAR SINAL</button>
 
-<div class="signal-box">
+<div class="sinal-box">
 
 <div id="sinal"></div>
 
-<div class="next">
-🎯 JOGAR NA PRÓXIMA RODADA
-</div>
+<div class="next">JOGAR NA PRÓXIMA RODADA</div>
 
-<div class="protection" id="protecao"></div>
+<div class="protecao" id="protecao"></div>
 
-<div class="g1">
-♻️ Apostar até G1
-</div>
+<div class="gale">Apostar até G1</div>
 
 </div>
 
@@ -234,94 +204,46 @@ margin-top:10px;
 
 <script>
 
-/* MATRIX */
+/* RELÓGIO BRASILIA */
 
-const canvas=document.getElementById("matrix")
-const ctx=canvas.getContext("2d")
+function atualizarHora(){
 
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
+let hora = new Date().toLocaleTimeString(
+"pt-BR",
+{timeZone:"America/Sao_Paulo"}
+)
 
-const letters="0123456789"
-const fontSize=16
-const columns=canvas.width/fontSize
-const drops=[]
-
-for(let x=0;x<columns;x++) drops[x]=1
-
-function drawMatrix(){
-
-ctx.fillStyle="rgba(0,0,0,0.08)"
-ctx.fillRect(0,0,canvas.width,canvas.height)
-
-ctx.fillStyle="red"
-ctx.font=fontSize+"px monospace"
-
-for(let i=0;i<drops.length;i++){
-
-const text=letters.charAt(Math.floor(Math.random()*letters.length))
-
-ctx.fillText(text,i*fontSize,drops[i]*fontSize)
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-drops[i]=0
-}
-
-drops[i]++
+document.getElementById("hora").innerText="⏰ Brasília "+hora
 
 }
 
-}
+setInterval(atualizarHora,1000)
 
-setInterval(drawMatrix,33)
-
-/* LOGIN */
-
-function entrar(){
-
-document.getElementById("login").style.display="none"
-document.getElementById("dash").style.display="block"
-
-gerarSinal()
-
-}
-
-/* HORARIO BRASILIA */
-
-function hora(){
-
-document.getElementById("hora").innerText =
-"⏰ Brasília: " + new Date().toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo"})
-
-}
-
-setInterval(hora,1000)
-
-hora()
+atualizarHora()
 
 /* GERAR SINAL */
 
 function gerarSinal(){
 
-let cor=Math.random()<0.5?"vermelho":"preto"
+let cor = Math.random() < 0.5 ? "red" : "black"
 
-let protecao=Math.random()<0.08
+let protecao = Math.random() < 0.1
 
-if(cor=="vermelho"){
+let bola = document.createElement("div")
 
-document.getElementById("sinal").innerHTML=
-'<div class="pulse-ball"></div>'
+bola.classList.add("ball")
 
-}else{
+bola.classList.add(cor)
 
-document.getElementById("sinal").innerHTML=
-'<div class="pulse-black"></div>'
+let sinal = document.getElementById("sinal")
 
-}
+sinal.innerHTML=""
+
+sinal.appendChild(bola)
 
 if(protecao){
 
-document.getElementById("protecao").innerText="🛡 Proteção no ⚪ Branco"
+document.getElementById("protecao").innerText="🛡 Proteção no Branco"
 
 }else{
 
@@ -330,6 +252,67 @@ document.getElementById("protecao").innerText=""
 }
 
 }
+
+/* GERAR AUTOMÁTICO POR HORÁRIO */
+
+setInterval(()=>{
+
+let agora = new Date()
+
+let minuto = agora.getMinutes()
+
+if(minuto % 4 === 0){
+
+gerarSinal()
+
+}
+
+},15000)
+
+/* MATRIX */
+
+const canvas=document.getElementById("matrix")
+
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+const letters="0123456789"
+const fontSize=14
+
+const columns=canvas.width/fontSize
+
+const drops=[]
+
+for(let x=0;x<columns;x++)
+drops[x]=1
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="red"
+ctx.font=fontSize+"px monospace"
+
+for(let i=0;i<drops.length;i++){
+
+let text=letters.charAt(Math.random()*letters.length)
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+
+drops[i]=0
+
+drops[i]++
+
+}
+
+}
+
+setInterval(draw,33)
 
 </script>
 
