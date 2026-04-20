@@ -54,17 +54,18 @@ opacity:.8;
 margin-bottom:20px;
 }
 
+/* 🔵 BOTÃO AZUL */
 button{
 width:100%;
 padding:16px;
 border:none;
 border-radius:20px;
-background:linear-gradient(90deg,#ff0000,#ff3b3b);
+background:linear-gradient(90deg,#007bff,#00bfff);
 color:white;
 font-weight:bold;
 font-size:18px;
 cursor:pointer;
-box-shadow:0 0 25px red;
+box-shadow:0 0 25px #00bfff;
 margin-bottom:20px;
 }
 
@@ -129,11 +130,9 @@ box-shadow:0 0 20px red;
 }
 
 @keyframes pulsar{
-
 0%{transform:scale(1);}
 50%{transform:scale(1.15);}
 100%{transform:scale(1);}
-
 }
 
 .next{
@@ -152,6 +151,7 @@ font-size:13px;
 opacity:.8;
 }
 
+/* 🟢 BARRA VERDE NEON */
 .progress-box{
 margin-top:15px;
 display:none;
@@ -168,7 +168,8 @@ overflow:hidden;
 .progress-fill{
 width:0%;
 height:100%;
-background:linear-gradient(90deg,#ff0000,#ff4040);
+background:linear-gradient(90deg,#00ff00,#39ff14);
+box-shadow:0 0 15px #00ff00;
 }
 
 .progress-text{
@@ -176,7 +177,7 @@ display:flex;
 justify-content:space-between;
 font-size:12px;
 margin-top:5px;
-color:#ff3b3b;
+color:#39ff14;
 }
 
 .assinatura{
@@ -236,14 +237,11 @@ Desenvolvido por Henrique Sampaio
 <script>
 
 function atualizarHora(){
-
 let hora = new Date().toLocaleTimeString(
 "pt-BR",
 {timeZone:"America/Sao_Paulo"}
 )
-
 document.getElementById("hora").innerText="⏰ Brasília "+hora
-
 }
 
 setInterval(atualizarHora,1000)
@@ -267,10 +265,8 @@ barra.style.width=progresso+"%"
 porcentagem.innerText=progresso+"%"
 
 if(progresso>=100){
-
 clearInterval(carregando)
 mostrarSinal()
-
 }
 
 },30)
@@ -348,4 +344,4 @@ setInterval(draw,33)
 </script>
 
 </body>
-</html>
+  </html>
